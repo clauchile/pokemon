@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokemon</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+    <style>
+        .border {
+            border: 1px solid purple;
+            border-radius: 50%;
+        }
+
+        .container input {
+            width: 150px;
+            text-align: center;
+        }
+
+        /* * {
+            outline: 1px dotted red;
+            } */
+    </style>
+
+</head>
+
+<body>
+    <div class="container">
+        <h1 class="text-center mb-3 ">Juego pokemon</h1>
+        <label for="usr">Cantidad:</label>
+        <input type="text" class="form-control mb-3" placeholder="0" id="usr">
+        <button class=" boton col-3 mx-auto auto boton btn btn-primary mb-3">Click para empezar</button>
+        <div id="pokemon">
+
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+        crossorigin="anonymous"></script>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <script>
+
+        function random_color() {
+            var rgb = ['a', 'b', 'c', 'd', 'e', 'f', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
+            color = '#'  //this is what we'll return!
+            for (var i = 0; i < 6; i++) {
+                x = Math.floor((Math.random() * 16))
+                color += rgb[x];
+            }
+            return color;
+        }
+
+        $('.boton').click(function () {
+            $("#pokemon").empty();
+            let num = $('#usr').val();
+            let valor = $("#pokemon").val;
+            // console.log(valor);
+
+
+            if (num < 897) {
+                for (let r = 1; r <= num; r++) {
+                    // });
+                    $('#pokemon').append(`<img id = "${r}" class = border src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/${r}.png">`);
+                    $('#pokemon img').css("background-color", random_color());
+
+                }
+            } else {
+                toastr.error("Debe ser un número entre 1 y 896");
+            }
+
+           
+
+            // const numerico = new RegExp(/^[0-9]+$/);
+
+
+        }
+        )
+    </script>
+
+
+    <script>
+        toastr.options = {
+            "closeButton": true,
+            "progressBar": true,
+        }
+
+
+    </script>
+</body>
+
+</html>
